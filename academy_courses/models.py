@@ -8,11 +8,36 @@ ACTIVE_CHOICES = (
     (" ", "Inactive"),
 )
 
+
+SOCIAL_MEDIA_ICONS = [
+    ("", "Select an icon"),
+    ("fa-facebook", "Facebook"),
+    ("fa-twitter", "Twitter"),
+    ("fa-instagram", "Instagram"),
+    ("fa-linkedin", "LinkedIn"),
+    ("fa-youtube", "YouTube"),
+    ("fa-pinterest", "Pinterest"),
+    ("fa-tumblr", "Tumblr"),
+    ("fa-flickr", "Flickr"),
+    ("fa-github", "GitHub"),
+    ("fa-bitbucket", "Bitbucket"),
+    ("fa-gitlab", "GitLab"),
+    ("fa-stack-overflow", "Stack Overflow"),
+    ("fa-medium", "Medium"),
+    ("fa-reddit", "Reddit"),
+    ("fa-whatsapp", "WhatsApp"),
+    ("fa-skype", "Skype"),
+]
+
+
+
 class Course(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=5000)
     price = models.FloatField()
-    time = models.TimeField()
+    hour = models.IntegerField()
+    min = models.IntegerField()
+    image = models.ImageField()
     created_at = models.DateTimeField(auto_now_add=True)    
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -42,3 +67,15 @@ class Slider(models.Model):
         choices=ACTIVE_CHOICES,
         default='Select status',
     )
+
+class Urls(models.Model):
+    title = models.CharField(max_length=30, default="My Urls")
+    icon = models.CharField(
+        default='Select an icon',
+        choices=SOCIAL_MEDIA_ICONS,
+        max_length=100
+    )
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title

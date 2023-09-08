@@ -4,12 +4,12 @@
     <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             {% for slide in slider %}
-                <li data-target="#header-carousel" data-slide-to="" class="{{ slide.is_active }}"></li>
+                <li data-target="#header-carousel" data-slide-to="{{ foorloop }}" class="{{ slide.is_active }}"></li>
             {% endfor %}
         </ol>
         <div class="carousel-inner">
             {% for slide in slider %}
-                <div class="carousel-item active" style="min-height: 300px;">
+                <div class="carousel-item {{ slide.is_active }}" style="min-height: 300px;">
                     <img class="position-relative w-100" src="{{ slide.image.url }}" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">

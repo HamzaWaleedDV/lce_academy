@@ -16,3 +16,8 @@ class OpinionAdmin(admin.ModelAdmin):
 @admin.register(models.Slider)
 class SliderAdmin(admin.ModelAdmin):
     list_per_page = 20
+
+
+@admin.register(models.Urls)
+class UrlsAdmin(admin.ModelAdmin):
+    list_per_page = 20    

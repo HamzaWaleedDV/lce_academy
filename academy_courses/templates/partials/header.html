@@ -3,7 +3,7 @@
     <div class="row align-items-center py-4 px-xl-5">
         <div class="col-lg-3">
             <a href="" class="text-decoration-none">
-                <h1 class="m-0"><span class="text-primary">{% trans 'LCE-' %}</span>{% trans 'COURSES' %}</h1>
+                <h1 class="m-0"><span class="text-primary">{% trans 'E-' %}</span>{% trans 'COURSES' %}</h1>
             </a>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                 <a href="" class="text-decoration-none d-block d-lg-none">
-                    <h1 class="m-0"><span class="text-primary">{% trans 'LCE-' %}</span>{% trans 'COURSES' %}</h1>
+                    <h1 class="m-0"><span class="text-primary">{% trans 'E-' %}</span>{% trans 'COURSES' %}</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -25,12 +25,29 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav py-0">
                         <a href="/" class="nav-item nav-link active"> {% trans 'Home' %} </a>
-                        <a href="#" class="nav-item nav-link"> {% trans 'About' %} </a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link"> {% trans 'About' %} </a>
                         <a href="#" class="nav-item nav-link"> {% trans 'Courses' %} </a>
                         <a href="#" class="nav-item nav-link"> {% trans 'Blog' %} </a>
                     </div>
                 </div>
             </nav>
         </div>
+        <form class="form-inline ml-auto px-lg-0">
+            <div class="input-group">
+                <input
+                    value="{{ request.GET.query }}"
+                    name="query"
+                    type="text"
+                    class="form-control"
+                    style="width: 270px;"
+                    placeholder="{% translate 'Search Courses' %}"
+                />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

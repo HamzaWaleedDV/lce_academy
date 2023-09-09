@@ -4,7 +4,7 @@
     <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             {% for slide in slider %}
-                <li data-target="#header-carousel" data-slide-to="{{ foorloop }}" class="{{ slide.is_active }}"></li>
+                <li data-target="#header-carousel" data-slide-to="{{ forloop.counter0 }}" class="{{ slide.is_active }}"></li>
             {% endfor %}
         </ol>
         <div class="carousel-inner">

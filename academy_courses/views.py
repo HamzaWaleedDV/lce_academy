@@ -5,19 +5,19 @@ from .models import Course, Opinion, New, Slider, Urls
 
 def index(request):
     slider = Slider.objects.all()
-    course = Course.objects.all()
-    opinion = Opinion.objects.all()
-    new = New.objects.all(),
-    url = Urls.objects.all()
+
 
     return render(
         request,
         'index.html',
         {
             'slider': slider,
-            'courses': course,
-            'opinions': opinion,
-            'new': new,
-            'urls': url
         }
     )
+
+
+def about(request):
+    aboutus_image = Slider.objects.first()
+    opinion = Opinion.objects.all()
+
+    return render(request, 'about.html', {'image': aboutus_image,})

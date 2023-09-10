@@ -1,3 +1,46 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from .models import Article, Category
+from .froms import ArticleForm
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
+
+class ArticleCreateView(CreateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'create.html'
+    success_url = reverse_lazy('article_view')
+
+
+class ArticleListView(ListView):
+    model = Article
+    template_name = 'blog.html'
+    context_object_name = 'articles'
+    paginate_by = 12
+    queryset = Article.objects.select_related('category')
+
+
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        where = []
+        q = self.request.GET.get('q', None)
+        cid = self.kwargs.get('id')
+        
+        if q:
+            where.append(Q(title__icontains=q))
+        if cid:
+            where.append(Q(category_id=cid))
+
+        if where:
+            # استخدام reduce والدمج لجميع استعلامات البحث
+            from functools import reduce
+            from operator import or_
+
+            query_set = query_set.filter(reduce(or_, where))
+
+        return query_set

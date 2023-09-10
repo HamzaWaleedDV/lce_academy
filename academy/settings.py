@@ -65,7 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'academy_courses.custom_context_proccessor.slider_footer'
+                'academy_courses.custom_context_proccessor.slider_footer',
+                'academy_courses.custom_context_proccessor.category',
             ],
         },
     },

@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Article, Category
 from .froms import ArticleForm
 from django.core.paginator import Paginator
@@ -37,10 +37,29 @@ class ArticleListView(ListView):
             where.append(Q(category_id=cid))
 
         if where:
-            # استخدام reduce والدمج لجميع استعلامات البحث
             from functools import reduce
             from operator import or_
 
             query_set = query_set.filter(reduce(or_, where))
 
         return query_set
+    
+
+class ArticleDetailView(DetailView):
+    model = Article
+    context_object_name = 'art'
+    template_name = 'single.html'
+
+
+class ArticleUpdateView(UpdateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'update.html'
+    success_url = reverse_lazy('article_view')
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = 'delete.html'
+    context_object_name = 'article'
+    success_url = reverse_lazy('article_view')

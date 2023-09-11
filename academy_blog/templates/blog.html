@@ -30,7 +30,7 @@
                                 <div class="col-lg-6 mb-4">
                                     <div class="blog-item position-relative overflow-hidden rounded mb-2">
                                         <img class="img-fluid" src="{{ article.cover_image.url }}" alt="">
-                                        <a class="blog-overlay text-decoration-none" href="">
+                                        <a class="blog-overlay text-decoration-none" href="{% url 'article_detail' article.id %}">
                                             <h5 class="text-white mb-3"> {{ article.title }} </h5>
                                             <p class="text-primary m-0"> {{ article.created_at.date }} </p>
                                         </a>
@@ -116,7 +116,7 @@
                         <div class="mb-5">
                             <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{% trans 'Recent Post' %}</h3>
                             {% for la in la_ar %}
-                                <a class="d-flex align-items-center text-decoration-none mb-3" href="">
+                                <a class="d-flex align-items-center text-decoration-none mb-3" href="{% url 'article_detail' la.id %}">
                                     <img class="img-fluid rounded" width="50" height="50" src="{{ la.cover_image.url }}" alt="">
                                     <div class="pl-3">
                                         <h6 class="m-1"> {{ la.title }} </h6>

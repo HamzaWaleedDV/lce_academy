@@ -55,7 +55,7 @@
                     <div class="col-lg-4 mb-4">
                         <div class="blog-item position-relative overflow-hidden rounded mb-2">
                             <img class="img-fluid" src="{{ la.cover_image.url }}" alt="">
-                            <a class="blog-overlay text-decoration-none" href="">
+                            <a class="blog-overlay text-decoration-none" href="{% url 'article_detail' la.id %}">
                                 <h5 class="text-white mb-3"> {{ la.title }} </h5>
                                 <p class="text-primary m-0"> {{ la.created_at.date }} </p>
                             </a>

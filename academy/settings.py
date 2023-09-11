@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'academy_courses',
-    'academy_blog'
+    'academy_blog',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,13 @@ MEDIA_ROOT = 'media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/3u0j2svll0bmrfef0ytdyyjz9u1drkii7i1xaqzl2dldjcs3/tinymce/6/tinymce.min.js'
+TINYMCE_JS_URL = os.path.join(MEDIA_URL, "tinymce/js/tinymce/tinymce.min.js")
+TINYMCE_COMPRESSOR = False
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+    'toolbar': 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+}

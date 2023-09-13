@@ -1,16 +1,19 @@
-from .models import Course, Opinion, Urls
+from .models import Course, Opinion, Urls, Video
 from academy_blog.models import Category, Article
 
 def slider_footer(request):
-    course = Course.objects.all()
+    course = Course.objects.all()[:20]
     opinion = Opinion.objects.all()
     url = Urls.objects.all()
+    article = Article.objects.all()[:20]
 
     return {
         'courses': course,
         'opinions': opinion,
         'urls': url,
+        'arts': article
     }
+
 
 def category(request):
     cat = Category.objects.all()

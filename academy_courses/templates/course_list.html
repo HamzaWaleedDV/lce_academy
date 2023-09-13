@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+    <h1 class="text-center">
+        {% for video in videos %}
+            {% if forloop.counter == 1 %}
+                {{ video.course.name }}            
+            {% endif %}
+        {% endfor %}
+    </h1>
+    <hr>
+    <br>
+    <div class="card w-75 mb-3 mx-auto">
+        <h5 class="card-header">
+            {% trans 'Videos' %}
+        </h5>
+        <ul class="list-group list-group-flush">
+            {% for video in videos %}
+                <a href="{% url 'course_page' video.id %}">
+                    <li class="list-group-item"> {{ video.title }} </li>
+                </a>     
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}

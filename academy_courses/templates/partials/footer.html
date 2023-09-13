@@ -18,13 +18,20 @@
                     <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">{% trans 'Our Courses' %}</h5>
                     <div class="d-flex flex-column justify-content-start">
                         {% for course in courses %}
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i> {{ course.name }} </a>
+                            <a class="text-white mb-2" href="{% url 'course_list' course.id %}"><i class="fa fa-angle-right mr-2"></i> {{ course.name }} </a>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="col-lg-5 col-md-12 mb-5">
+            <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">{% trans 'Our Blog' %}</h5>
+            <div class="d-flex flex-column justify-content-start">
+                {% for art in arts %}
+                    <a class="text-white mb-2" href="{% url 'article_view' art.id %}"><i class="fa fa-angle-right mr-2"></i> {{ art.title }} </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">

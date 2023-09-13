@@ -21,3 +21,8 @@ class SliderAdmin(admin.ModelAdmin):
 @admin.register(models.Urls)
 class UrlsAdmin(admin.ModelAdmin):
     list_per_page = 20    
+
+
+@admin.register(models.Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_per_page = 20
